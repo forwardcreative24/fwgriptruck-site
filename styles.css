@@ -863,8 +863,75 @@ p, li, dd, blockquote, .lede { text-wrap: pretty; }
 .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--gray); }
 .check { border-radius: var(--radius-sm); }
 
-/* footer copy sits on ink */
-.footer .lede { color: #C9C4B8; }
+
+/* ------------------------------------------------------------- fixes (2026-10-26) */
+/* more breathing room at the edges */
+:root { --w-page: 1120px; --gutter: clamp(1.75rem, 7vw, 5rem); }
+.wrap { padding-inline: var(--gutter); max-width: calc(var(--w-page) + 2 * var(--gutter)); }
+.strip { padding-inline: var(--gutter); max-width: calc(var(--w-page) + 2 * var(--gutter)); }
+.wrap .strip { padding-inline: 0; max-width: none; }
+.hero { padding-block: calc(var(--s5) + 1rem) var(--s4); }
+
+/* photo grids */
+.strip-mosaic > :nth-child(6) { object-position: 50% 80%; }
+.strip-2 { grid-template-columns: repeat(2, 1fr); }
+.strip-1 { grid-template-columns: 1fr; }
+.strip-1 img { aspect-ratio: 21 / 9; }
+.strip img { cursor: zoom-in; transition: opacity .2s ease; }
+.strip img:hover { opacity: .9; }
+.lightbox { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center;
+  background: rgba(20,19,17,.94); padding: 3.5rem 1rem; }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: var(--radius-sm); cursor: default; }
+.lb-btn { position: absolute; background: none; border: 0; color: var(--white); font: 400 2rem/1 var(--body); padding: .75rem 1rem; cursor: pointer; opacity: .8; }
+.lb-btn:hover { opacity: 1; }
+.lb-close { top: .5rem; right: .5rem; }
+.lb-prev { left: .25rem; top: 50%; transform: translateY(-50%); }
+.lb-next { right: .25rem; top: 50%; transform: translateY(-50%); }
+
+/* equipment: open lists, no counts */
+.sheet-meta { display: none; }
+.sheets-grid { display: grid; gap: 14px; }
+.sheet-static .sheet-head { margin: 0; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--line-soft);
+  font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 1.35rem; letter-spacing: .01em; }
+.sheet + .sheet.sheet-static { margin-top: 0; }
+
+/* add-ons: two columns of cards, one list each */
+.addons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.addon, .addon:first-of-type { border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--white); padding: 1.1rem 1.2rem 1.2rem; }
+.addon-head { justify-content: space-between; margin-bottom: .75rem; }
+.addon-price { border-radius: 999px; border: 0; padding: .25rem .65rem; }
+.addon .items { columns: 1; }
+@media (max-width: 760px) { .addons { grid-template-columns: 1fr; } }
+
+/* booking: form lines up with the heading */
+.book { padding-top: calc(var(--s5) + 1rem); }
+.book .lede { margin-top: var(--s3); }
+.book .mono-note { margin-top: var(--s2); max-width: 40ch; }
+.book-contact { margin-top: var(--s3); font-family: var(--mono); font-size: .9rem; line-height: 1.9; }
+.book-contact a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.book .cols-aside { align-items: start; }
+
+/* checkboxes that visibly stay checked */
+.check input[type=checkbox] { appearance: none; -webkit-appearance: none; width: 1.1rem; height: 1.1rem; padding: 0; margin: 0;
+  border: 1.5px solid var(--gray); border-radius: 4px; background: var(--white); display: grid; place-content: center; flex: none; cursor: pointer; }
+.check input[type=checkbox]::after { content: ""; width: .32rem; height: .6rem; border: solid var(--rust-ink); border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px); opacity: 0; }
+.check input[type=checkbox]:checked { background: var(--rust); border-color: var(--rust); }
+.check input[type=checkbox]:checked::after { opacity: 1; }
+.check input[type=checkbox]:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
+.check:has(input:checked) { border-color: var(--rust); background: #F6E9DF; }
+
+/* footer: light, calm, one orange button */
+.marquee { display: none; }
+.footer { background: var(--panel); color: var(--ink); border-top: 1px solid var(--line-soft); }
+.footer a:not(.btn) { color: var(--ink); }
+.footer .lede { color: var(--ink-soft); }
+.footer-grid { border-top-color: var(--line); }
+.footer .contact-list a { border-bottom-color: var(--line); }
+.footer .contact-list a:hover { color: var(--rust-dk); border-bottom-color: var(--rust); }
+.footer .eyebrow { color: var(--gray); }
+.footer .fine { color: var(--gray); }
 
 /* ---------------------------------------------------------- review mode */
 .review-note { display: none; }

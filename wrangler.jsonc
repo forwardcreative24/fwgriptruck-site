@@ -1,9 +1,13 @@
-// Cloudflare serves this folder as static files.
+// Cloudflare serves this folder as static files; worker.js first sends
+// every other hostname (fwgriptruck.com, fortwaynegriptruck.com) to www.
 {
   "name": "fwgriptruck-site",
+  "main": "worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": true,
     "not_found_handling": "404-page",
     "html_handling": "drop-trailing-slash"
   }

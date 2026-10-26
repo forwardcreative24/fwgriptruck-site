@@ -926,6 +926,11 @@ p, li, dd, blockquote, .lede { text-wrap: pretty; }
 .marquee { display: none; }
 .footer { padding-top: var(--s6); }
 .footer-grid { margin-top: var(--s5); }
+.footer .footer-cta { margin: 0; }
+.footer .footer-cta a { color: var(--white); text-decoration: none; display: inline-flex; align-items: baseline; gap: .2em; transition: color .15s ease; }
+.footer .footer-cta span { color: var(--rust); transition: transform .15s ease; display: inline-block; }
+.footer .footer-cta a:hover { color: var(--rust); }
+.footer .footer-cta a:hover span { transform: translateX(.15em); }
 
 /* headings stay put while the copy scrolls (booking form excepted) */
 .cols-sticky { position: static; }

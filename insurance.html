@@ -29,6 +29,7 @@
     <a class="wordmark" href="/" aria-label="Fort Wayne Grip Truck, home"><img src="/img/logo.png" alt="Fort Wayne Grip Truck"></a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a class="nav-home" href="/">Home</a>
       <a href="/equipment-list">Equipment List</a><a href="/insurance" aria-current="page">Insurance</a><a href="/about">About</a>
       <a class="btn" href="/book">Book the truck</a>
     </nav>
@@ -172,10 +173,19 @@
   var b = document.getElementById('menu-btn'), m = document.querySelector('.masthead');
   if (!b || !m) return;
   b.addEventListener('click', function () {
-    var open = m.classList.toggle('is-open');
+    setOpen(!m.classList.contains('is-open'));
+  });
+  function setOpen(open) {
+    m.classList.toggle('is-open', open);
     document.documentElement.classList.toggle('menu-open', open);
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
     b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && m.classList.contains('is-open')) setOpen(false);
+  });
+  [].forEach.call(m.querySelectorAll('.nav a'), function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
   });
 })();
 (function () {

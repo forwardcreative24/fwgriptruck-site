@@ -929,6 +929,8 @@ p, li, dd, blockquote, .lede { text-wrap: pretty; }
 input[type=date] { cursor: pointer; }
 /* phones: no fixed booking bar; the menu opens full screen */
 .mobile-cta { display: none !important; }
+.nav-home { display: none; }
+@media (max-width: 760px) { .masthead.is-open .nav-home { display: block; } }
 @media (max-width: 760px) {
   body { padding-bottom: 0; }
   .masthead.is-open { background: var(--field); }
@@ -951,7 +953,9 @@ input[type=date] { cursor: pointer; }
     font-family: var(--mono); font-size: .95rem; font-weight: 600; letter-spacing: .12em;
     padding: 1.1rem 1.8rem; box-shadow: 0 6px 16px -8px rgba(25,24,22,.45);
   }
-  html.menu-open, html.menu-open body { overflow: hidden; }
+  /* open menu: header pinned to the top of the screen wherever you've scrolled */
+  .masthead.is-open { position: fixed; top: 0; left: 0; right: 0; }
+  html.menu-open body { overflow: hidden; }
 }
 .thanks h1.h-xl { font-size: clamp(4.25rem, 16vw, 11rem); }
 .thanks p { max-width: 52ch; font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }

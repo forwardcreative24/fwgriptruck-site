@@ -922,16 +922,39 @@ p, li, dd, blockquote, .lede { text-wrap: pretty; }
 .check input[type=checkbox]:focus-visible { outline: 3px solid var(--rust); outline-offset: 2px; }
 .check:has(input:checked) { border-color: var(--rust); background: #F6E9DF; }
 
-/* footer: light, calm, one orange button */
+/* footer: back to charcoal, no scrolling banner */
 .marquee { display: none; }
-.footer { background: var(--panel); color: var(--ink); border-top: 1px solid var(--line-soft); }
-.footer a:not(.btn) { color: var(--ink); }
-.footer .lede { color: var(--ink-soft); }
-.footer-grid { border-top-color: var(--line); }
-.footer .contact-list a { border-bottom-color: var(--line); }
-.footer .contact-list a:hover { color: var(--rust-dk); border-bottom-color: var(--rust); }
-.footer .eyebrow { color: var(--gray); }
-.footer .fine { color: var(--gray); }
+.footer { padding-top: var(--s6); }
+.footer-grid { margin-top: var(--s5); }
+
+/* headings stay put while the copy scrolls (booking form excepted) */
+.cols-sticky { position: static; }
+.book .cols-sticky { position: sticky; top: 90px; }
+[id] { scroll-margin-top: 80px; }
+
+/* collapsible lists: a real plus/minus */
+.sheet > summary { display: flex; justify-content: space-between; align-items: center; }
+.sheet-toggle { position: relative; width: 1.6rem; height: 1.6rem; border: 1px solid var(--line); border-radius: 999px; flex: none; }
+.sheet-toggle::before, .sheet-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; width: .7rem; height: 2px; background: var(--ink);
+  transform: translate(-50%, -50%); transition: transform .2s ease; }
+.sheet-toggle::after { transform: translate(-50%, -50%) rotate(90deg); }
+.sheet[open] .sheet-toggle::after { transform: translate(-50%, -50%) rotate(0deg); }
+.sheet > summary:hover .sheet-toggle { border-color: var(--ink); }
+
+/* rate box: three panels */
+.doorpanel { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) {
+  .doorpanel { grid-template-columns: 1fr; }
+  .doorpanel > div { border-left: 0; }
+  .doorpanel > div + div { border-top: 1px solid var(--line-soft); }
+}
+
+/* testimonials: set like quotes, not notes */
+.quote { padding: 1.75rem 1.6rem 1.5rem; }
+.quote blockquote { position: relative; font-size: 1.06rem; line-height: 1.6; color: var(--ink-soft); padding-top: 2.1rem; }
+.quote blockquote::before { content: "“"; position: absolute; top: -.35rem; left: -.1rem; font-family: var(--display); font-weight: 700;
+  font-size: 4rem; line-height: 1; color: var(--rust); }
+.quote .caps { font-size: .86em; letter-spacing: .04em; font-weight: 600; color: var(--ink); }
 
 /* ---------------------------------------------------------- review mode */
 .review-note { display: none; }

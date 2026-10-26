@@ -177,7 +177,6 @@
   </div>
 </footer>
 
-<a class="mobile-cta" href="/book">Book the truck &rarr;</a>
 
 <script>
 (function () {
@@ -185,6 +184,7 @@
   if (!b || !m) return;
   b.addEventListener('click', function () {
     var open = m.classList.toggle('is-open');
+    document.documentElement.classList.toggle('menu-open', open);
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
     b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });

@@ -927,6 +927,32 @@ p, li, dd, blockquote, .lede { text-wrap: pretty; }
 .footer { padding-top: var(--s6); }
 .footer-grid { margin-top: var(--s5); }
 input[type=date] { cursor: pointer; }
+/* phones: no fixed booking bar; the menu opens full screen */
+.mobile-cta { display: none !important; }
+@media (max-width: 760px) {
+  body { padding-bottom: 0; }
+  .masthead.is-open { background: var(--field); }
+  .nav {
+    position: fixed; inset: 0; z-index: -1;
+    padding: calc(56px + var(--s4)) var(--gutter) calc(var(--s5) + env(safe-area-inset-bottom));
+    background: var(--field); border-bottom: 0; overflow-y: auto;
+  }
+  .masthead.is-open .nav { display: flex; }
+  .nav a {
+    font-family: var(--display); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(2.25rem, 11vw, 3rem); line-height: 1; letter-spacing: .01em;
+    padding: 1rem 0; border-bottom: 1px solid var(--line);
+  }
+  .nav a:hover { background: none; color: var(--rust-dk); }
+  .nav a[aria-current="page"] { color: var(--rust-dk); }
+  .masthead .nav a.btn, .masthead .nav a.btn:hover {
+    margin-top: var(--s4); align-self: flex-start;
+    background: var(--rust); color: var(--rust-ink); border: 0; border-radius: 999px;
+    font-family: var(--mono); font-size: .95rem; font-weight: 600; letter-spacing: .12em;
+    padding: 1.1rem 1.8rem; box-shadow: 0 6px 16px -8px rgba(25,24,22,.45);
+  }
+  html.menu-open, html.menu-open body { overflow: hidden; }
+}
 .thanks h1.h-xl { font-size: clamp(4.25rem, 16vw, 11rem); }
 .thanks p { max-width: 52ch; font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }
 .footer .footer-cta { margin: 0; }
@@ -937,7 +963,7 @@ input[type=date] { cursor: pointer; }
 
 /* headings stay put while the copy scrolls (booking form excepted) */
 .cols-sticky { position: static; }
-.book .cols-sticky { position: sticky; top: 90px; }
+@media (min-width: 901px) { .book .cols-sticky { position: sticky; top: 90px; } }
 [id] { scroll-margin-top: 80px; }
 
 /* collapsible lists: a real plus/minus */

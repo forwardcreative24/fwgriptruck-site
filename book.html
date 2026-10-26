@@ -112,6 +112,10 @@
         (function () {
           var f = document.getElementById('booking'), st = document.getElementById('form-status');
           var skip = ['access_key', 'subject', 'from_name', 'redirect', 'botcheck'];
+          // a click anywhere on a date field opens the calendar, not just the icon
+          f.querySelectorAll('input[type=date]').forEach(function (el) {
+            el.addEventListener('click', function () { try { el.showPicker(); } catch (err) {} });
+          });
           f.addEventListener('submit', function (e) {
             e.preventDefault();
             var d = new FormData(f), out = new FormData();

@@ -926,6 +926,9 @@ p, li, dd, blockquote, .lede { text-wrap: pretty; }
 .marquee { display: none; }
 .footer { padding-top: var(--s6); }
 .footer-grid { margin-top: var(--s5); }
+input[type=date] { cursor: pointer; }
+.thanks h1.h-xl { font-size: clamp(4.25rem, 16vw, 11rem); }
+.thanks p { max-width: 52ch; font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }
 .footer .footer-cta { margin: 0; }
 .footer .footer-cta a { color: var(--white); text-decoration: none; display: inline-flex; align-items: baseline; gap: .2em; transition: color .15s ease; }
 .footer .footer-cta span { color: var(--rust); transition: transform .15s ease; display: inline-block; }

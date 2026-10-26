@@ -3,3 +3,5 @@ README.md
 CHANGES.md
 .git
 .github
+.wrangler
+.gitignore

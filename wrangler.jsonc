@@ -10,5 +10,7 @@
     "run_worker_first": true,
     "not_found_handling": "404-page",
     "html_handling": "drop-trailing-slash"
-  }
+  },
+  // Lets non-main branches build a preview link with `wrangler preview`.
+  "previews": {}
 }

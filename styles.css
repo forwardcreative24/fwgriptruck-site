@@ -1047,3 +1047,39 @@ input[type=date] { cursor: pointer; }
 @media (min-width: 901px) {
   .quotes > .quote-mobile { display: none; }
 }
+
+/* ------------------------------------------------------------- 2026-11-05 polish */
+/* taller, roomier header */
+@media (min-width: 761px) {
+  .masthead-in { min-height: 80px; }
+  .wordmark img { height: 40px; }
+  .nav { gap: var(--s4); }
+  .nav a { font-size: 0.86rem; font-weight: 500; }
+  .nav .btn { padding: 0.8rem 1.35rem; }
+}
+@media (max-width: 760px) {
+  .masthead-in { min-height: 64px; }
+  .wordmark img { height: 30px; }
+  .nav { padding-top: calc(64px + var(--s4)); }
+}
+
+/* add-ons on the home page: priced rows inside the same open/close lists as the base kit */
+.band-addons .h-lg { margin-bottom: var(--s2); }
+.addons-lede { margin: 0 0 var(--s4); max-width: 52ch; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.55; }
+.band-addons .sheet > summary { background: var(--white); }
+.band-addons .sheet > summary:hover { background: var(--field); }
+.ao-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s4); }
+.ao-list li { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: .2rem .8rem; padding: .85rem 0; border-top: 1px solid var(--line-soft); }
+.ao-list li:nth-child(-n+2) { border-top: 0; padding-top: 0; }
+.ao-name { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 1.15rem; line-height: 1.05; }
+.ao-price { font-family: var(--mono); font-size: .78rem; font-weight: 600; letter-spacing: .04em; background: var(--rust); color: var(--rust-ink);
+  border-radius: 999px; padding: .2rem .6rem; white-space: nowrap; }
+.ao-note { grid-column: 1 / -1; font-size: .88rem; line-height: 1.45; color: var(--gray); }
+@media (max-width: 760px) {
+  .ao-list { grid-template-columns: 1fr; }
+  .ao-list li:nth-child(2) { border-top: 1px solid var(--line-soft); padding-top: .85rem; }
+}
+
+/* testimonials: a real heading */
+.band-ink .h-lg { color: var(--white); }
+.ao-foot { grid-column: 1 / -1; display: block; margin: .35rem 0 0; font-family: var(--mono); font-size: .76rem; letter-spacing: .02em; color: var(--rust-dk); }

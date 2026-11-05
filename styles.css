@@ -1031,3 +1031,11 @@ input[type=date] { cursor: pointer; }
   .quote-dots button[aria-current="true"]::before { opacity: 1; background: var(--rust); transform: scale(1.15); }
 }
 @media (prefers-reduced-motion: reduce) { .quotes { scroll-behavior: auto; } }
+@media (max-width: 900px) {
+  .quotes > .quote-desk { display: none; }
+}
+@media (max-width: 600px) {
+  .quotes > .quote { flex-basis: 88%; padding: 1.25rem 1.15rem 1.1rem; gap: 1rem; }
+  .quotes .quote blockquote { font-size: .98rem; line-height: 1.5; padding-top: 1.6rem; }
+  .quotes .quote blockquote::before { font-size: 3rem; }
+}

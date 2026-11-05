@@ -225,6 +225,33 @@
 
 <script>
 (function () {
+  var row = document.querySelector('.quotes');
+  if (!row) return;
+  var cards = [].slice.call(row.querySelectorAll('.quote'));
+  if (cards.length < 2) return;
+  row.setAttribute('aria-label', 'Testimonials');
+  var dots = document.createElement('div');
+  dots.className = 'quote-dots';
+  cards.forEach(function (c, n) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Show testimonial ' + (n + 1) + ' of ' + cards.length);
+    b.addEventListener('click', function () { row.scrollTo({ left: c.offsetLeft - row.offsetLeft, behavior: 'smooth' }); });
+    dots.appendChild(b);
+  });
+  row.parentNode.insertBefore(dots, row.nextSibling);
+  var btns = dots.children, t;
+  function mark() {
+    var x = row.scrollLeft, best = 0, d = Infinity;
+    cards.forEach(function (c, n) { var k = Math.abs(c.offsetLeft - row.offsetLeft - x); if (k < d) { d = k; best = n; } });
+    if (row.scrollLeft + row.clientWidth >= row.scrollWidth - 4) best = cards.length - 1;
+    [].forEach.call(btns, function (b, n) { b.setAttribute('aria-current', n === best ? 'true' : 'false'); });
+  }
+  row.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(mark, 60); }, { passive: true });
+  window.addEventListener('resize', mark);
+  mark();
+})();
+(function () {
   var b = document.getElementById('menu-btn'), m = document.querySelector('.masthead');
   if (!b || !m) return;
   b.addEventListener('click', function () {

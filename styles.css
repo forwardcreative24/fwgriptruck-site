@@ -1003,3 +1003,31 @@ input[type=date] { cursor: pointer; }
 }
 .review .add { background: #FFE36E; color: var(--ink); box-shadow: 0 0 0 2px #FFE36E; }
 @media (max-width: 760px) { .review .review-note { bottom: 64px; } }
+
+/* quotes on phones/tablets: one card at a time, swipe sideways, dots below */
+.quote-dots { display: none; }
+@media (max-width: 900px) {
+  .quotes {
+    display: flex; grid-template-columns: none;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+    scrollbar-width: none; gap: 10px; padding-bottom: 2px;
+    align-items: flex-start;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+  }
+  .quotes::-webkit-scrollbar { display: none; }
+  .quotes > .quote { flex: 0 0 86%; scroll-snap-align: start; }
+  .band-ink .quote-dots { color: var(--white); }
+  .quote-dots { display: flex; justify-content: center; gap: 4px; margin-top: 14px; }
+  .quote-dots button {
+    width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; color: inherit;
+    display: grid; place-items: center;
+  }
+  .quote-dots button::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: currentColor; opacity: .3; transition: opacity .2s, transform .2s;
+  }
+  .quote-dots button[aria-current="true"]::before { opacity: 1; background: var(--rust); transform: scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) { .quotes { scroll-behavior: auto; } }

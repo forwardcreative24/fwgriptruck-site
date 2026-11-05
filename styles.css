@@ -1044,3 +1044,6 @@ input[type=date] { cursor: pointer; }
   .quotes { align-items: stretch; }
   .quotes > .quote { min-height: 22rem; }
 }
+@media (min-width: 901px) {
+  .quotes > .quote-mobile { display: none; }
+}

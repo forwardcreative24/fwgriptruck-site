@@ -1084,5 +1084,3 @@ input[type=date] { cursor: pointer; }
 .band-ink .h-lg { color: var(--white); }
 .ao-foot { grid-column: 1 / -1; display: block; margin: .35rem 0 0; font-family: var(--mono); font-size: .76rem; letter-spacing: .02em; color: var(--rust-dk); }
 
-/* Welcome guide: stand-in text until the real picks are filled in */
-.placeholder { color: var(--gray); font-style: italic; }

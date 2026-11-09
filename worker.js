@@ -10,6 +10,13 @@ export default {
     if (host !== HOME && !host.endsWith('.workers.dev') && host !== 'localhost' && host !== '127.0.0.1') {
       return Response.redirect(`https://${HOME}${url.pathname}${url.search}`, 301);
     }
-    return env.ASSETS.fetch(request);
+    const res = await env.ASSETS.fetch(request);
+    // The /welcome guide is only for booked crews: keep it out of search results.
+    if (url.pathname === '/welcome' || url.pathname.startsWith('/welcome.')) {
+      const out = new Response(res.body, res);
+      out.headers.set('X-Robots-Tag', 'noindex, nofollow');
+      return out;
+    }
+    return res;
   },
 };

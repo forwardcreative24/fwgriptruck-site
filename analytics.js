@@ -3,7 +3,7 @@
 // Events: book_click (any link to /book), email_click / phone_click, inquiry_sent (the thank-you page,
 // which only opens after a booking request really went through), so a button tap never counts as a booking.
 (function () {
-  var CLARITY_ID = '';
+  var CLARITY_ID = 'zcndd9d3if';
   if (!CLARITY_ID || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
   (function (c, l, a, r, i, t, y) { c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
     t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i; y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);

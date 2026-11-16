@@ -149,7 +149,7 @@
   });
 })();
 (function () {
-  var d = document, imgs = [].slice.call(d.querySelectorAll('.strip img'));
+  var d = document, imgs = [].slice.call(d.querySelectorAll('.strip:not(.strip-1) img'));
   if (!imgs.length) return;
   var box = d.createElement('div'), big = d.createElement('img'), i = 0;
   box.className = 'lightbox'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Photo');

@@ -1078,9 +1078,10 @@ input[type=date] { cursor: pointer; }
   .nav a { word-spacing: -0.45em; }
 }
 
-/* home hero: scale with screen height so the rate box shows on the first screen of most laptops */
+/* home hero: fill the first screen so just the top of the rate box peeks in at the bottom edge
+   (124px leaves about 80px of the rate box showing: the label and the price) */
 @media (min-width: 761px) {
-  .hero-art { min-height: 0; }
+  .hero-art { min-height: calc(100vh - 124px); min-height: calc(100svh - 124px); }
   .hero-art .wrap { padding-block: clamp(2rem, 7vh, 5.5rem) clamp(2.5rem, 6vh, 3.5rem); }
   .hero-art .h-xl { font-size: clamp(3rem, min(10.5vw, 12.5vh), 7.5rem); }
 }

@@ -1049,20 +1049,6 @@ input[type=date] { cursor: pointer; }
 }
 
 /* ------------------------------------------------------------- 2026-11-05 polish */
-/* header: halfway between the original (62px) and the 11-05 bump (80px) */
-@media (min-width: 761px) {
-  .masthead-in { min-height: 71px; }
-  .wordmark img { height: 35px; }
-  .nav { gap: 1.875rem; }
-  .nav a { font-size: 0.81rem; font-weight: 500; }
-  .nav .btn { padding: 0.75rem 1.2rem; }
-}
-@media (max-width: 760px) {
-  .masthead-in { min-height: 60px; }
-  .wordmark img { height: 27px; }
-  .nav { padding-top: calc(60px + var(--s4)); }
-}
-
 /* add-ons on the home page: priced rows inside the same open/close lists as the base kit */
 .band-addons .h-lg { margin-bottom: var(--s2); }
 .addons-lede { margin: 0 0 var(--s4); max-width: 52ch; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.55; }

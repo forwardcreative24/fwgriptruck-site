@@ -1072,3 +1072,10 @@ input[type=date] { cursor: pointer; }
 
 /* single wide photo strip (About page): just a photo, no lightbox or hover zoom */
 .strip-1 img, .strip-1 img:hover { cursor: default; opacity: 1; transform: none; filter: none; }
+
+/* desktop menu: plain sans instead of wide-tracked mono, easier to read */
+@media (min-width: 761px) {
+  .nav { gap: 2rem; }
+  .nav a { font-family: var(--body); font-size: 0.84rem; font-weight: 600; letter-spacing: 0.05em; word-spacing: -0.08em; border-top: 2px solid transparent; }
+  .nav .btn { font-family: var(--body); font-size: 0.84rem; font-weight: 600; letter-spacing: 0.05em; padding: 0.6rem 1.1rem; border-top: 0; }
+}
